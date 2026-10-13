@@ -125,7 +125,7 @@ export default function ModuleDetailModal({
     setIsLoadingFeedback(true);
     setAiError(null);
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${key}`;
 
     try {
       const response = await fetch(url, {
