@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FFFBF7;
+  --foreground: #1C1917;
+  --brand-primary: #0EA5E9;
+  --brand-secondary: #14B8A6;
+  --brand-success: #22C55E;
+  --brand-warning: #F59E0B;
+  --brand-text-sec: #78716C;
+  --card-bg: #FFFFFF;
+  --card-border: #E7E5E4;
+  --sidebar-bg: #FFFFFF;
+  --header-bg: #FFFBF7;
+}
+
+.dark {
+  --background: #1C1412;
+  --foreground: #F5F0ED;
+  --brand-primary: #0EA5E9;
+  --brand-secondary: #14B8A6;
+  --brand-success: #22C55E;
+  --brand-warning: #F59E0B;
+  --brand-text-sec: #A89890;
+  --card-bg: #2A1F1A;
+  --card-border: #3D2E27;
+  --sidebar-bg: #231A16;
+  --header-bg: #231A16;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono);
+  
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-success: var(--brand-success);
+  --color-brand-warning: var(--brand-warning);
+  --color-brand-text-sec: var(--brand-text-sec);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-sidebar-bg: var(--sidebar-bg);
+  --color-header-bg: var(--header-bg);
+  
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom visual layout styles */
+.glass-effect {
+  backdrop-filter: blur(12px);
+  background: rgba(var(--card-bg), 0.7);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom gamification keyframes */
+
+/* Quiz Shake error animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+/* Correct answer checkmark pop bounce */
+@keyframes pop-bounce {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.animate-bounce-subtle {
+  animation: pop-bounce 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Confetti particle styling */
+@keyframes float-up {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.confetti-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  animation: float-up 2s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Smooth transitions for theme toggle */
+body, 
+header, 
+aside, 
+.bg-card-bg, 
+.bg-sidebar-bg,
+.border-card-border, 
+.border-card-border\/60,
+.text-foreground, 
+.text-brand-text-sec,
+input,
+textarea,
+select {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
+}
+
+/* Floating +10 XP animation */
+@keyframes float-up-xp {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 0;
+  }
+  20% {
+    transform: translate(-50%, -20px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -60px);
+    opacity: 0;
+  }
+}
+
+.animate-float-xp {
+  animation: float-up-xp 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Custom gamification glow pulse */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(245, 158, 11, 0.1);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+    transform: scale(1.03);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
